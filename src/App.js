@@ -1,6 +1,9 @@
 import React from "react";
+import Quotes from "./Components/Quotes";
+import QuoteForm from "./Components/QuoteForm";
 
 function App() {
+
   return (
     <div className="container-fluid">
       <div
@@ -10,11 +13,8 @@ function App() {
         <h1>Quote Maker</h1>
       </div>
       <hr />
-      {/*
-          TODO:
-
-          Render QuoteForm and Quotes Components
-         */}
+      <Quotes />
+      <QuoteForm />
     </div>
   );
 }
