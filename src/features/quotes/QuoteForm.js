@@ -1,18 +1,34 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { addQuote } from "./quotesSlice";
+// import { removeQuote } from "./quotesSlice";
+// import { upvoteQuote } from "./quotesSlice";
+// import { downvoteQuote } from "./quotesSlice";
+import { useDispatch } from "react-redux";
 
 function QuoteForm() {
   const [formData, setFormData] = useState({
-    // set up a controlled form with internal state
-    // look at the form to determine what keys need to go here
+    author: "",
+    content: ""
   });
+  // const [authorInput, setAuthorInput] = useState('');
+  const dispatch = useDispatch();
 
   function handleChange(event) {
-    // Handle Updating Component State
+    setFormData({
+      ...formData, 
+      [event.target.name]: event.target.value
+    })
   }
 
   function handleSubmit(event) {
+    event.preventDefault();
+    const quote = { content: formData.content, author: formData.author, vote: 0, id: uuid() };
+    dispatch(addQuote(quote));
+    setFormData({
+      author: "",
+      content: ""
+    })
     // Handle Form Submit event default
     // Create quote object from state
     // Pass quote object to action creator
@@ -25,13 +41,14 @@ function QuoteForm() {
         <div className="col-md-8 col-md-offset-2">
           <div className="panel panel-default">
             <div className="panel-body">
-              <form className="form-horizontal">
+              <form onSubmit={handleSubmit} className="form-horizontal">
                 <div className="form-group">
                   <label htmlFor="content" className="col-md-4 control-label">
                     Quote
                   </label>
                   <div className="col-md-5">
-                    <textarea
+                    <textarea onChange={handleChange} 
+                      name="content"
                       className="form-control"
                       id="content"
                       value={formData.content}
@@ -43,7 +60,8 @@ function QuoteForm() {
                     Author
                   </label>
                   <div className="col-md-5">
-                    <input
+                    <input onChange={handleChange}
+                      name="author"   
                       className="form-control"
                       type="text"
                       id="author"

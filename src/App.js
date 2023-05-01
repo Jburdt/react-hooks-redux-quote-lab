@@ -1,6 +1,6 @@
 import React from "react";
-import Quotes from "./Components/Quotes";
-import QuoteForm from "./Components/QuoteForm";
+import Quotes from "./features/quotes/Quotes";
+import QuoteForm from "./features/quotes/QuoteForm";
 
 function App() {
 
@@ -13,6 +13,7 @@ function App() {
         <h1>Quote Maker</h1>
       </div>
       <hr />
+      <h2>Quotes</h2>
       <Quotes />
       <QuoteForm />
     </div>
