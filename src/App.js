@@ -13,9 +13,8 @@ function App() {
         <h1>Quote Maker</h1>
       </div>
       <hr />
-      <h2>Quotes</h2>
-      <Quotes />
       <QuoteForm />
+      <Quotes />
     </div>
   );
 }

@@ -11,7 +11,7 @@ function QuoteForm() {
     author: "",
     content: ""
   });
-  // const [authorInput, setAuthorInput] = useState('');
+  
   const dispatch = useDispatch();
 
   function handleChange(event) {
@@ -29,10 +29,6 @@ function QuoteForm() {
       author: "",
       content: ""
     })
-    // Handle Form Submit event default
-    // Create quote object from state
-    // Pass quote object to action creator
-    // Update component state to return to default state
   }
 
   return (

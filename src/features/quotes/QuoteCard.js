@@ -1,16 +1,16 @@
 import React from "react";
 
-function QuoteCard(props) {
-  console.log("quotecardprops", props)
+function QuoteCard({ quote }) {
+  console.log("quotecardprops", quote)
   return (
     <div>
       <div className="card card-inverse card-success card-primary mb-3 text-center">
         <div className="card-block">
           <blockquote className="card-blockquote">
-            <p>{props.content}</p>
+            <p>{quote.content}</p>
             <footer>
               - author{" "}
-              <cite title="Source Title">{props.author}</cite>
+              <cite title="Source Title">{quote.author}</cite>
             </footer>
           </blockquote>
         </div>
@@ -30,7 +30,7 @@ function QuoteCard(props) {
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div>Votes: {props.vote}</div>
+          <div>Votes: {quote.vote}</div>
         </div>
       </div>
     </div>

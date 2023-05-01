@@ -47,7 +47,7 @@ export default function quotesReducer(state = initialState, action) {
    
    case "quotes/downvote": 
      return state.map((quote) => {
-        if ( quote.id === action.payload)
+        if (quote.id === action.payload)
        { quote.vote =  quote.vote - 1
         return quote }
         else if (quote.id !== action.payload )
@@ -58,3 +58,4 @@ export default function quotesReducer(state = initialState, action) {
      return state
    }
 }
+// FIX VOTES BUTTON
