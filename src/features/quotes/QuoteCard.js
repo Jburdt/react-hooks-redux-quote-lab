@@ -1,7 +1,24 @@
 import React from "react";
+import { removeQuote } from "./quotesSlice";
+import { useDispatch } from "react-redux";
+import { downvoteQuote } from "./quotesSlice";
+import { upvoteQuote } from "./quotesSlice";
 
 function QuoteCard({ quote }) {
-  console.log("quotecardprops", quote)
+  const dispatch = useDispatch();
+
+  const deleteQuote = () => {
+    dispatch(removeQuote(quote.id));
+  };
+
+  const decrementVote = () => {
+    dispatch(downvoteQuote(quote.id))
+  };
+
+  const incrementVote = () => {
+    dispatch(upvoteQuote(quote.id))
+  };
+
   return (
     <div>
       <div className="card card-inverse card-success card-primary mb-3 text-center">
@@ -20,17 +37,17 @@ function QuoteCard({ quote }) {
             role="group"
             aria-label="Basic example"
           >
-            <button type="button" className="btn btn-primary">
+            <button onClick={incrementVote} type="button" className="btn btn-primary">
               Upvote
             </button>
-            <button type="button" className="btn btn-secondary">
+            <button onClick={decrementVote} type="button" className="btn btn-secondary">
               Downvote
             </button>
-            <button type="button" className="btn btn-danger">
+            <button onClick={deleteQuote} type="button" className="btn btn-danger">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div>Votes: {quote.vote}</div>
+          <div>Votes: {quote.votes}</div>
         </div>
       </div>
     </div>

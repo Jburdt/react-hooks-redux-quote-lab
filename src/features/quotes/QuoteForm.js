@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { v4 as uuid } from "uuid";
 import { addQuote } from "./quotesSlice";
-// import { removeQuote } from "./quotesSlice";
-// import { upvoteQuote } from "./quotesSlice";
-// import { downvoteQuote } from "./quotesSlice";
 import { useDispatch } from "react-redux";
 
 function QuoteForm() {
@@ -11,7 +8,7 @@ function QuoteForm() {
     author: "",
     content: ""
   });
-  
+
   const dispatch = useDispatch();
 
   function handleChange(event) {
@@ -23,7 +20,7 @@ function QuoteForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const quote = { content: formData.content, author: formData.author, vote: 0, id: uuid() };
+    const quote = { content: formData.content, author: formData.author, votes: 0, id: uuid() };
     dispatch(addQuote(quote));
     setFormData({
       author: "",
